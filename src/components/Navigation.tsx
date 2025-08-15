@@ -12,15 +12,15 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className="bg-red-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-wine-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:h-15">
         <div className="flex justify-center">
           <ul className="flex space-x-8">
             {navItems.map((item, index) => (
               <li key={index}>
                 <a
                   href={item.href}
-                  className="flex items-center px-3 py-4 text-white font-medium hover:bg-red-600 transition-colors duration-200"
+                  className="flex items-center px-3 py-4 text-white font-medium hover:bg-wine-200 transition-colors duration-200"
                 >
                   {item.title}
                   {item.hasDropdown && (
