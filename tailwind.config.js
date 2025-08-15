@@ -18,6 +18,12 @@ export default {
           wine:{
             100: '#951F39',
             200:'#681628'
+          },
+          forestGreen:{
+            100: '#00764B'
+          },
+          duskySky:{
+            100:'#FAFAFA'
           }
         },
         animation: {

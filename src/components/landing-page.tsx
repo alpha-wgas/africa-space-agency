@@ -1,4 +1,3 @@
-import { landingPageImage, spaceSovereigntyImage, continentalInovationImage } from '../assets'
 import WhoAreWe from './sections/WhoAreWe'
 import FeaturesSection from './sections/FeaturesSection'
 import PrioritiesSection from './sections/PrioritiesSection'
@@ -22,7 +21,7 @@ const LandingPage = () => {
               <article className="group cursor-pointer">
                 <div className="mb-6 overflow-hidden ">
                   <img 
-                    src={landingPageImage}
+                    src='https://res.cloudinary.com/dondpcuxz/image/upload/v1755252898/landing-page_ttjyua.png'
                     alt="Space debris visualization showing active and inactive satellites around Earth"
                     className="w-full h-64 object-cover shadow-lg bg-black group-hover:scale-95 transition-transform duration-300"
                   />
@@ -53,7 +52,7 @@ const LandingPage = () => {
                 <div>
                   <div className="overflow-hidden">
                     <img 
-                      src={spaceSovereigntyImage} 
+                      src='https://res.cloudinary.com/dondpcuxz/image/upload/v1755252901/space-sovereignty_qv5kch.png' 
                       alt="AFSA meeting at the AU Mid-Year coordinators meeting"
                       className="w-full h-48 object-cover group-hover:scale-95 transition-transform duration-300"
                     />
@@ -82,7 +81,7 @@ const LandingPage = () => {
                   <div className="">
                     <div className="overflow-hidden">
                       <img 
-                        src={continentalInovationImage}
+                        src='https://res.cloudinary.com/dondpcuxz/image/upload/v1755252897/continetal-ino_n26jqu.png'
                         alt="Global Gateway logo"
                         className="h-48 mr-4 pb-5 group-hover:scale-95 transition-transform duration-300"
                       />

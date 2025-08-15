@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
-import { historicalTimelineImage, membersCountriesImage, leadershipImage } from '../../assets'
+import { ArrowRight,  } from 'lucide-react'
+
 
 interface FeatureCardProps {
   image: string
@@ -43,45 +42,23 @@ interface FeaturesSectionProps {
 }
 
 const FeaturesSection = ({ className }: FeaturesSectionProps) => {
-  const [activeTab, setActiveTab] = useState<'strategic' | 'programmes'>('strategic')
-
-  const strategicFeatures = [
+  const features = [
     {
       title: "Historical Timeline",
       description: "African Space Agency's journey, from policy frameworks to headquarters in Egypt, shaping Africa's space ambitions.",
-      image: historicalTimelineImage
+      image: 'https://res.cloudinary.com/dondpcuxz/image/upload/v1755252899/historical-timeline_nn7e4j.png'
     },
     {
       title: "Leadership",
       description: "Meet the leaders and visionaries driving Africa's space exploration and innovation efforts.",
-      image: leadershipImage
+      image: 'https://res.cloudinary.com/dondpcuxz/image/upload/v1755252900/leadership_xhwruk.png'
     },
     {
       title: "Members Countries",
       description: "Discover the African countries contributing to space science, innovation, and technological advancement.",
-      image: membersCountriesImage
+      image: 'https://res.cloudinary.com/dondpcuxz/image/upload/v1755252900/members-countries_c7aobw.png'
     }
   ]
-
-  const programmesFeatures = [
-    {
-      title: "Earth Observation",
-      description: "Satellite-based monitoring systems for climate change, agriculture, and natural resource management across Africa.",
-      image: historicalTimelineImage
-    },
-    {
-      title: "Satellite Connectivity",
-      description: "Building telecommunications infrastructure to bridge the digital divide across rural and remote African regions.",
-      image: leadershipImage
-    },
-    {
-      title: "Capacity Building",
-      description: "Training programs and educational initiatives to develop Africa's next generation of space professionals.",
-      image: membersCountriesImage
-    }
-  ]
-
-  const currentFeatures = activeTab === 'strategic' ? strategicFeatures : programmesFeatures
 
   const handleLearnMore = (title: string) => {
     console.log(`Learn more about: ${title}`)
@@ -91,57 +68,13 @@ const FeaturesSection = ({ className }: FeaturesSectionProps) => {
   return (
     <section className={`py-16 ${className}`} aria-labelledby="features-title">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
-        {/* Section Header */}
-        <div className="mb-12">
-          <div className="flex items-center justify-between mb-6">
-            <h2 
-              id="features-title"
-              className="text-3xl font-bold font-pt-serif text-gray-900"
-            >
-              About AFSA
-            </h2>
-            
-            {/* Tab Buttons with Connected Borders */}
-            <div className="hidden sm:flex items-center">
-              <button 
-                onClick={() => setActiveTab('strategic')}
-                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
-                  activeTab === 'strategic'
-                    ? 'text-black border-wine-100 bg-wine-100/10'
-                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
-                }`}
-              >
-                Strategic Pillars
-              </button>
-              <button 
-                onClick={() => setActiveTab('programmes')}
-                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
-                  activeTab === 'programmes'
-                    ? 'text-black border-wine-100 bg-wine-100/10'
-                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
-                }`}
-              >
-                Programmes
-              </button>
-            </div>
-          </div>
-          
-          <div className="flex items-center justify-between">
-            <p className="text-gray-600 font-satoshi max-w-2xl text-lg">
-              Harnessing Space Technology for Africa's <br/> Sustainable Development
-            </p>
-            <button className="inline-flex items-center text-sm font-medium font-satoshi text-wine-100 hover:text-wine-200 transition-colors duration-200 group">
-              View all
-              <ArrowUpRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-            </button>
-          </div>
-        </div>
+
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {currentFeatures.map((feature, index) => (
+          {features.map((feature, index) => (
             <FeatureCard
-              key={`${activeTab}-${index}`}
+              key={index}
               title={feature.title}
               description={feature.description}
               image={feature.image}

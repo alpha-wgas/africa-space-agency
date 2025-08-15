@@ -1,4 +1,3 @@
-import { whoWeAreImage } from '../../assets'
 
 interface WhoAreWeProps {
   className?: string
@@ -22,7 +21,7 @@ const WhoAreWe = ({ className }: WhoAreWeProps) => {
           {/* Left - Image (733px equivalent - wider) */}
           <div className="flex-shrink-0 lg:w-[58.7%]">
             <img
-              src={whoWeAreImage}
+              src='https://res.cloudinary.com/dondpcuxz/image/upload/v1755252900/who-we-are_doidbi.png'
               alt="AFSA leadership meeting with African dignitaries around conference table"
               className="w-full h-64 lg:h-80 object-cover "
             />

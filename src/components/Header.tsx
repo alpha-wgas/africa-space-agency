@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { GMIcon, SearchIcon, AFSALogo } from '../assets'
+import { GMIcon, SearchIcon } from '../assets'
 
 const Header = () => {
   const [selectedLanguage, setSelectedLanguage] = useState('ENGLISH')
@@ -56,7 +56,7 @@ const Header = () => {
               <div className="flex-shrink-0">
                 <img 
                   className="h-16 w-auto" 
-                  src={AFSALogo} 
+                  src='https://res.cloudinary.com/dondpcuxz/image/upload/v1755252898/logo-afsa_j8mygd.png' 
                   alt="AFSA logo"
                 />
               </div>

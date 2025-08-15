@@ -1,15 +1,16 @@
-import { ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 import { spaceSovereigntyImage } from '../../assets'
 
 interface PriorityCardProps {
   title: string
   description: string
   image: string
-  category?: string
+
 }
 
-const PriorityCard = ({ title, description, image, category }: PriorityCardProps) => (
-  <article className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 group">
+const PriorityCard = ({ title, description, image }: PriorityCardProps) => (
+  <article className="bg-duskySky-100  overflow-hidden  hover:bg-wine-200 hover:text-white transition-all duration-300 group">
     <div className="relative overflow-hidden">
       <img
         src={image}
@@ -20,18 +21,14 @@ const PriorityCard = ({ title, description, image, category }: PriorityCardProps
     </div>
     
     <div className="p-6">
-      <h3 className="text-lg font-bold font-pt-serif text-gray-900 mb-3 group-hover:text-wine-100 transition-colors duration-200">
+      <h3 className="text-lg font-bold font-pt-serif text-gray-900 mb-3 group-hover:text-white transition-colors duration-200">
         {title}
       </h3>
-      <p className="text-gray-700 text-sm font-satoshi leading-relaxed">
+      <p className="text-gray-700 group-hover:text-white text-sm font-satoshi leading-relaxed">
         {description}
       </p>
       
-      {category && (
-        <span className="inline-block mt-3 text-xs font-medium font-satoshi text-wine-100 bg-wine-100/10 px-2 py-1 rounded">
-          {category}
-        </span>
-      )}
+      
     </div>
   </article>
 )
@@ -41,7 +38,9 @@ interface PrioritiesSectionProps {
 }
 
 const PrioritiesSection = ({ className }: PrioritiesSectionProps) => {
-  const priorities = [
+  const [activeTab, setActiveTab] = useState<'strategic' | 'programmes'>('strategic')
+
+  const strategicPriorities = [
     {
       title: "Earth Observation",
       description: "Satellites have become essential tools for African countries, especially in managing natural resources and preventing disasters.",
@@ -68,6 +67,35 @@ const PrioritiesSection = ({ className }: PrioritiesSectionProps) => {
     }
   ]
 
+  const programmesPriorities = [
+    {
+      title: "GMES & Africa",
+      description: "Earth observation program providing satellite data for environmental monitoring, disaster management, and sustainable development across Africa.",
+      image: spaceSovereigntyImage,
+      category: "Earth Observation"
+    },
+    {
+      title: "Capacity Building",
+      description: "Educational and training initiatives to develop technical expertise and institutional capacity in space technologies across African nations.",
+      image: spaceSovereigntyImage,
+      category: "Education"
+    },
+    {
+      title: "Regional Cooperation",
+      description: "Fostering partnerships between African countries and international partners to advance space technology and knowledge sharing.",
+      image: spaceSovereigntyImage,
+      category: "Partnership"
+    },
+    {
+      title: "Resource Management",
+      description: "Utilizing space-based technologies for sustainable management of Africa's natural resources and environmental protection.",
+      image: spaceSovereigntyImage,
+      category: "Sustainability"
+    }
+  ]
+
+  const currentPriorities = activeTab === 'strategic' ? strategicPriorities : programmesPriorities
+
   return (
     <section className={`py-16 bg-white ${className}`} aria-labelledby="priorities-title">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,13 +106,29 @@ const PrioritiesSection = ({ className }: PrioritiesSectionProps) => {
               id="priorities-title"
               className="text-3xl font-bold font-pt-serif text-gray-900"
             >
-              Priorities of AFSA
+              {activeTab === 'strategic' ? 'Priorities of AFSA' : 'AfSA Programme'}
             </h2>
-            <div className="hidden sm:flex items-center space-x-4">
-              <button className=" justify-start pr-3 mr-0 text-base font-medium font-satoshi text-black border-b-4 border-wine-100  hover:bg-wine-100 hover:text-white transition-colors duration-200">
+            
+            {/* Tab Buttons */}
+            <div className="hidden sm:flex items-center">
+              <button 
+                onClick={() => setActiveTab('strategic')}
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
+                  activeTab === 'strategic'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
                 Strategic Pillars
               </button>
-              <button className=" pl-0 text-base font-medium font-satoshi text-gray-600 border-b-4 border-gray-300  hover:bg-gray-50 transition-colors duration-200">
+              <button 
+                onClick={() => setActiveTab('programmes')}
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
+                  activeTab === 'programmes'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
                 Programmes
               </button>
             </div>
@@ -92,24 +136,26 @@ const PrioritiesSection = ({ className }: PrioritiesSectionProps) => {
           
           <div className="flex items-center justify-between">
             <p className="text-gray-600 font-satoshi max-w-2xl text-lg">
-              Harnessing Space Technology for Africa's <br/> Sustainable Development
+              {activeTab === 'strategic' 
+                ? 'Harnessing Space Technology for Africa\'s Sustainable Development'
+                : 'A landmark partnership between Africa and Europe, GMES & Africa fosters capacity building, climate resilience, and resource management through satellite data and regional expertise.'
+              }
             </p>
-            <button className="inline-flex items-center text-sm font-medium font-satoshi text-wine-100 hover:text-wine-200 transition-colors duration-200 group">
+            <button className="inline-flex items-center text-base font-medium font-satoshi text-forestGreen-100 hover:bg-gray-50 px-4 py-2.5 transition-colors duration-200 group rounded">
               View all
-              <ArrowUpRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+              <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
             </button>
           </div>
         </div>
 
         {/* Priority Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {priorities.map((priority, index) => (
+          {currentPriorities.map((priority, index) => (
             <PriorityCard
-              key={index}
+              key={`${activeTab}-${index}`}
               title={priority.title}
               description={priority.description}
               image={priority.image}
-              category={priority.category}
             />
           ))}
         </div>
