@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Play, ArrowUpRight } from 'lucide-react'
+import { Play } from 'lucide-react'
 import { spaceSovereigntyImage } from '../../assets'
+import ViewAllButton from '../ui/ViewAllButton'
 
 interface VideoCardProps {
   title: string
@@ -110,39 +111,94 @@ const MultimediaSection = ({ className }: MultimediaSectionProps) => {
   const videos = [
     {
       title: "THE INAUGURATION CEREMONY OF THE AFRICAN SPACE AGENCY",
-      description: "The African Space Agency was formally inaugurated on Sunday, 20th April 2025, during the NewSpace Africa Conference, gathering dignitaries worldwide.",
+      description: "The African Space Agency was formally inaugurated on Sunday, 20th April 2025, during the NewSpace Africa Conference, gathering dignitaries worldwide, including ministers and ambassadors from various countries in Africa, and beyond to mark a new era of African space governance.",
       thumbnail: spaceSovereigntyImage,
       duration: "15:42",
-      category: "Inauguration",
-      featured: true
+      category: "Inauguration"
     },
     {
       title: "THE INAUGURATION CEREMONY OF THE AFRICAN SPACE AGENCY", 
-      description: "Extended coverage of the historic inauguration ceremony with speeches from African leaders.",
+      description: "The African Space Agency was formally inaugurated on Sunday, 20th April 2025, during the NewSpace Africa Conference, gathering dignitaries worldwide, including ministers and ambassadors from various countries in Africa, and beyond to mark a new era of African space governance.",
       thumbnail: spaceSovereigntyImage,
       duration: "8:30",
       category: "Inauguration"
     },
     {
       title: "THE INAUGURATION CEREMONY OF THE AFRICAN SPACE AGENCY",
-      description: "Behind-the-scenes footage from the inauguration event showcasing preparation and logistics.",
+      description: "The African Space Agency was formally inaugurated on Sunday, 20th April 2025, during the NewSpace Africa Conference, gathering dignitaries worldwide, including ministers and ambassadors from various countries in Africa, and beyond to mark a new era of African space governance.",
       thumbnail: spaceSovereigntyImage,
       duration: "12:15",
       category: "Inauguration"
     },
     {
       title: "THE INAUGURATION CEREMONY OF THE AFRICAN SPACE AGENCY",
-      description: "International perspectives and reactions to the African Space Agency establishment.",
+      description: "The African Space Agency was formally inaugurated on Sunday, 20th April 2025, during the NewSpace Africa Conference, gathering dignitaries worldwide, including ministers and ambassadors from various countries in Africa, and beyond to mark a new era of African space governance.",
       thumbnail: spaceSovereigntyImage,
       duration: "6:45", 
       category: "Inauguration"
+    }
+  ]
+
+  const photos = [
+    {
+      id: 1,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
     },
     {
-      title: "THE INAUGURATION CEREMONY OF THE AFRICAN SPACE AGENCY",
-      description: "Future vision presentation outlining AFSA's strategic goals and roadmap.",
-      thumbnail: spaceSovereigntyImage,
-      duration: "10:20",
-      category: "Inauguration"
+      id: 2,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 3,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 4,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 5,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 6,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 7,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 8,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 9,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
+    },
+    {
+      id: 10,
+      image: spaceSovereigntyImage,
+      title: "Africa space agency inauguration",
+      date: "12/08/25"
     }
   ]
 
@@ -152,79 +208,228 @@ const MultimediaSection = ({ className }: MultimediaSectionProps) => {
   }
 
   return (
-    <section className={`py-16 bg-gray-50 ${className}`} aria-labelledby="multimedia-title">
+    <section className={`py-16 bg-white ${className}`} aria-labelledby="multimedia-title">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
             <h2 
               id="multimedia-title"
-              className="text-2xl font-bold font-pt-serif text-gray-900 mb-2"
+              className="text-3xl font-pt-serif text-gray-900"
             >
               Multimedia
             </h2>
-            <p className="text-gray-600 font-satoshi">
-              Explore photos, videos, and highlights that capture AFSA's journey and impact across Africa's space landscape.
-            </p>
-          </div>
-
-          <div className="hidden sm:flex items-center space-x-4">
-            <div className="flex bg-white rounded-lg border border-gray-200 p-1">
-              <button
+            
+            {/* Tab Buttons */}
+            <div className="hidden sm:flex items-center">
+              <button 
                 onClick={() => setActiveTab('photos')}
-                className={`px-4 py-2 text-sm font-medium font-satoshi rounded-md transition-colors duration-200 ${
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
                   activeTab === 'photos'
-                    ? 'bg-wine-100 text-white'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
                 }`}
               >
                 Photos
               </button>
-              <button
+              <button 
                 onClick={() => setActiveTab('videos')}
-                className={`px-4 py-2 text-sm font-medium font-satoshi rounded-md transition-colors duration-200 ${
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
                   activeTab === 'videos'
-                    ? 'bg-wine-100 text-white'
-                    : 'text-gray-600 hover:text-gray-900'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
                 }`}
               >
                 Videos
               </button>
             </div>
-            
-            <button className="inline-flex items-center text-sm font-medium font-satoshi text-wine-100 hover:text-wine-200 transition-colors duration-200 group">
-              View all
-              <ArrowUpRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-            </button>
+          </div>
+          
+          <div className="flex items-center justify-between ">
+            <p className="text-gray-600 font-satoshi max-w-2xl text-lg lg:w-[387px]">
+              Explore photos, videos, and highlights that capture AfSA's journey and impact across Africa's space landscape.
+            </p>
+            <ViewAllButton />
           </div>
         </div>
 
-        {/* Videos Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Featured Video */}
-          <div className="lg:col-span-2">
-            <VideoCard
-              {...videos[0]}
-              featured={true}
-              onPlay={() => handlePlayVideo(videos[0].title)}
-            />
-          </div>
+        {/* Content Based on Active Tab */}
+        {activeTab === 'videos' ? (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:h-[552px]">
+            {/* First Column - Large Video */}
+            <div className="lg:col-span-1 lg:w-[410px]">
+              <div className="bg-white  overflow-hidden">
+                <div className="relative">
+                  <img
+                    src={videos[0].thumbnail}
+                    alt={videos[0].title}
+                    className="w-full lg:h-[300px] object-cover"
+                  />
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <button
+                      onClick={() => handlePlayVideo(videos[0].title)}
+                      className="w-16 h-16 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors duration-300"
+                      aria-label={`Play video: ${videos[0].title}`}
+                    >
+                      <Play className="h-8 w-8 text-white fill-current ml-1" />
+                    </button>
+                  </div>
+                  
+                  {/* Title Overlay */}
+                  <div className="absolute top-4 left-4 right-4">
+                    <div className=" p-3">
+                      <p className="text-xs font-medium font-satoshi text-gray-900">
+                        {videos[0].title}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Video Description */}
+                <div className="py-4 ">
+                  <h3 className="text-lg font-medium font-pt-serif text-gray-900 mb-2">
+                    {videos[0].title}
+                  </h3>
+                  <p className="text-sm text-gray-600 font-satoshi leading-relaxed">
+                    {videos[0].description}
+                  </p>
+                </div>
+              </div>
+            </div>
 
-          {/* Video List */}
-          <div className="space-y-4">
-            {videos.slice(1).map((video, index) => (
-              <VideoCard
-                key={index}
-                title={video.title}
-                description={video.description}
-                thumbnail={video.thumbnail}
-                duration={video.duration}
-                category={video.category}
-                onPlay={() => handlePlayVideo(video.title)}
-              />
-            ))}
+            {/* Second Column - Video with Description */}
+            <div className="lg:col-span-1  lg:w-[410px]">
+              <div className="bg-white overflow-hidden">
+                <div className="relative">
+                  <img
+                    src={videos[1].thumbnail}
+                    alt={videos[1].title}
+                    className="w-full lg:h-[300px] object-cover"
+                  />
+                  
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                    <button
+                      onClick={() => handlePlayVideo(videos[1].title)}
+                      className="w-16 h-16 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors duration-300"
+                      aria-label={`Play video: ${videos[1].title}`}
+                    >
+                      <Play className="h-8 w-8 text-white fill-current ml-1" />
+                    </button>
+                  </div>
+                  
+                  {/* Title Overlay */}
+                  <div className="absolute top-4 left-4 right-4">
+                    <div className=" p-3">
+                      <p className="text-xs font-medium font-satoshi text-gray-900">
+                        {videos[1].title}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Video Description */}
+                <div className="py-4">
+                  <h3 className="text-lg font-medium font-pt-serif text-gray-900 mb-2">
+                    {videos[1].title}
+                  </h3>
+                  <p className="text-sm text-gray-600 font-satoshi leading-relaxed">
+                    {videos[1].description}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Third Column - Two Videos without Description */}
+            <div className="lg:col-span-1 space-y-4 lg:w-[410px]">
+              {videos.slice(2, 4).map((video, index) => (
+                <div key={index + 2} className="bg-white  overflow-hidden">
+                  <div className="relative">
+                    <img
+                      src={video.thumbnail}
+                      alt={video.title}
+                      className="w-full h-32 lg:h-[194px] object-cover"
+                    />
+                    
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+                      <button
+                        onClick={() => handlePlayVideo(video.title)}
+                        className="w-12 h-12 bg-red-600 hover:bg-red-700 rounded-lg flex items-center justify-center transition-colors duration-300"
+                        aria-label={`Play video: ${video.title}`}
+                      >
+                        <Play className="h-6 w-6 text-white fill-current ml-0.5" />
+                      </button>
+                    </div>
+                    
+                    {/* Title Overlay */}
+                    <div className="absolute top-2 left-2 right-2">
+                      <div className="  p-2">
+                        <p className="text-sm font-medium font-satoshi text-gray-900">
+                          {video.title}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Only Title - No Description */}
+                  <div className="py-1">
+                    <h4 className="text-lg font-medium font-pt-serif text-gray-900">
+                      {video.title}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-16">
+            {/* First Column - Larger Photos */}
+            <div className="lg:col-span-1 space-y-4 ">
+              {photos.slice(0, 2).map((photo) => (
+                <div key={photo.id} className="bg-white overflow-hidden lg:w-[355px]">
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    className="w-full h-[180px] object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="py-3">
+                    <p className="text-xs text-gray-500 font-satoshi mb-1">
+                      {photo.date}
+                    </p>
+                    <p className="text-sm font-medium font-pt-serif text-gray-900">
+                      {photo.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Remaining Columns - Smaller Photos */}
+            <div className="lg:col-span-3 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-2">
+              {photos.slice(2).map((photo) => (
+                <div key={photo.id} className=" overflow-hidden lg:w-[195px]">
+                  <img
+                    src={photo.image}
+                    alt={photo.title}
+                    className="w-full h-[180px] object-cover hover:scale-105 transition-transform duration-300"
+                    
+                  />
+                  <div className="p-3">
+                    <p className="text-xs text-gray-500 font-satoshi mb-1">
+                      {photo.date}
+                    </p>
+                    <p className="text-sm font-medium font-pt-serif text-gray-900">
+                      {photo.title}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )

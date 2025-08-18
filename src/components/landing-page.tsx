@@ -3,6 +3,7 @@ import FeaturesSection from './sections/FeaturesSection'
 import PrioritiesSection from './sections/PrioritiesSection'
 import MissionCarousel from './sections/MissionCarousel'
 import EventsSection from './sections/EventsSection'
+import InaugurationHeroSection from './sections/InaugurationHeroSection'
 import MediaGallery from './sections/MediaGallery'
 import MultimediaSection from './sections/MultimediaSection'
 import ResourcesSection from './sections/ResourcesSection'
@@ -116,6 +117,7 @@ const LandingPage = () => {
       <PrioritiesSection />
       <MissionCarousel />
       <EventsSection />
+      <InaugurationHeroSection />
       <MediaGallery />
       <MultimediaSection />
       <ResourcesSection />

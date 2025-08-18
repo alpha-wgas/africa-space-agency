@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { ArrowRight } from 'lucide-react'
 import { spaceSovereigntyImage } from '../../assets'
+import ViewAllButton from '../ui/ViewAllButton'
 
 interface PriorityCardProps {
   title: string
@@ -21,7 +21,7 @@ const PriorityCard = ({ title, description, image }: PriorityCardProps) => (
     </div>
     
     <div className="p-6">
-      <h3 className="text-lg font-bold font-pt-serif text-gray-900 mb-3 group-hover:text-white transition-colors duration-200">
+      <h3 className="text-lg font-normal font-pt-serif text-gray-900 mb-3 group-hover:text-white transition-colors duration-200">
         {title}
       </h3>
       <p className="text-gray-700 group-hover:text-white text-sm font-satoshi leading-relaxed">
@@ -104,7 +104,7 @@ const PrioritiesSection = ({ className }: PrioritiesSectionProps) => {
           <div className="flex items-center justify-between mb-6">
             <h2 
               id="priorities-title"
-              className="text-3xl font-bold font-pt-serif text-gray-900"
+              className="text-3xl  font-pt-serif text-gray-900"
             >
               {activeTab === 'strategic' ? 'Priorities of AFSA' : 'AfSA Programme'}
             </h2>
@@ -135,16 +135,13 @@ const PrioritiesSection = ({ className }: PrioritiesSectionProps) => {
           </div>
           
           <div className="flex items-center justify-between">
-            <p className="text-gray-600 font-satoshi max-w-2xl text-lg">
+            <p className="text-gray-600 font-satoshi max-w-2xl text-lg lg:w-auto">
               {activeTab === 'strategic' 
                 ? 'Harnessing Space Technology for Africa\'s Sustainable Development'
                 : 'A landmark partnership between Africa and Europe, GMES & Africa fosters capacity building, climate resilience, and resource management through satellite data and regional expertise.'
               }
             </p>
-            <button className="inline-flex items-center text-base font-medium font-satoshi text-forestGreen-100 hover:bg-gray-50 px-4 py-2.5 transition-colors duration-200 group rounded">
-              View all
-              <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-            </button>
+            <ViewAllButton />
           </div>
         </div>
 

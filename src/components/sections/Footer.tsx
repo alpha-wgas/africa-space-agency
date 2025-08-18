@@ -1,5 +1,4 @@
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
-import { AFSALogo } from '../../assets'
 
 interface FooterLinkProps {
   href: string
@@ -9,7 +8,7 @@ interface FooterLinkProps {
 const FooterLink = ({ href, children }: FooterLinkProps) => (
   <a
     href={href}
-    className="text-gray-300 hover:text-white text-sm font-satoshi transition-colors duration-200"
+    className="text-gray-700 hover:text-gray-900 text-sm font-satoshi transition-colors duration-200"
   >
     {children}
   </a>
@@ -24,7 +23,7 @@ interface SocialLinkProps {
 const SocialLink = ({ href, icon, label }: SocialLinkProps) => (
   <a
     href={href}
-    className="p-2 text-gray-400 hover:text-white hover:bg-wine-200 rounded-lg transition-all duration-200"
+    className="p-2 text-gray-600 hover:text-gray-900 rounded-lg transition-all duration-200"
     aria-label={label}
   >
     {icon}
@@ -82,27 +81,16 @@ const Footer = ({ className }: FooterProps) => {
   ]
 
   return (
-    <footer className={`bg-wine-100 text-white ${className}`}>
-      {/* Animated Banner */}
-      <div className="bg-green-600 overflow-hidden">
-        <div className="animate-marquee whitespace-nowrap py-2">
-          <span className="text-sm font-medium font-satoshi text-white mx-8">
-            🚀 Africa's Space Ambitions • Unifying Africa's Space Ambitions • 
-            Unifying Africa's Space Ambitions • Unifying Africa's Space Ambitions • 
-            Unifying Africa's Space Ambitions • Unifying Africa's Space Ambitions
-          </span>
-        </div>
-      </div>
-
+    <footer className={`bg-white ${className}`}>
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* About Us */}
           <div>
-            <h3 className="text-sm font-bold font-satoshi uppercase tracking-wide text-gray-200 mb-4">
+            <h3 className="text-sm font-medium font-satoshi uppercase tracking-wide text-gray-600 mb-6">
               ABOUT US
             </h3>
-            <nav className="space-y-3">
+            <nav className="space-y-4">
               {aboutUsLinks.map((link, index) => (
                 <div key={index}>
                   <FooterLink href={link.href}>
@@ -115,10 +103,10 @@ const Footer = ({ className }: FooterProps) => {
 
           {/* Opportunities */}
           <div>
-            <h3 className="text-sm font-bold font-satoshi uppercase tracking-wide text-gray-200 mb-4">
+            <h3 className="text-sm font-medium font-satoshi uppercase tracking-wide text-gray-600 mb-6">
               OPPORTUNITIES
             </h3>
-            <nav className="space-y-3">
+            <nav className="space-y-4">
               {opportunitiesLinks.map((link, index) => (
                 <div key={index}>
                   <FooterLink href={link.href}>
@@ -131,10 +119,10 @@ const Footer = ({ className }: FooterProps) => {
 
           {/* Programmes */}
           <div>
-            <h3 className="text-sm font-bold font-satoshi uppercase tracking-wide text-gray-200 mb-4">
+            <h3 className="text-sm font-medium font-satoshi uppercase tracking-wide text-gray-600 mb-6">
               PROGRAMMES
             </h3>
-            <nav className="space-y-3">
+            <nav className="space-y-4">
               {programmesLinks.map((link, index) => (
                 <div key={index}>
                   <FooterLink href={link.href}>
@@ -147,24 +135,23 @@ const Footer = ({ className }: FooterProps) => {
 
           {/* Organization Info */}
           <div>
-            <div className="flex items-center mb-4">
+            <div className="flex items-center mb-6">
               <img
-                src={AFSALogo}
+                src='https://res.cloudinary.com/dondpcuxz/image/upload/v1755252898/logo-afsa_j8mygd.png'
                 alt="AFSA Logo"
                 className="h-8 w-auto mr-3"
               />
-              <span className="font-bold font-satoshi text-lg">AFSA</span>
             </div>
-            <p className="text-gray-300 text-sm font-satoshi leading-relaxed mb-4">
+            <p className="text-gray-700 text-sm font-satoshi leading-relaxed mb-6">
               The African Space Agency is the primary point of contact for Africa's cooperation with Europe and other international partners.
             </p>
-            <div className="text-gray-300 text-sm font-satoshi space-y-1">
+            <div className="text-gray-700 text-sm font-satoshi space-y-2">
               <p>Egypt Space City, New Cairo</p>
               <p>Governorate, Egypt</p>
-              <p className="mt-3">
+              <p className="mt-4">
                 <a 
                   href="mailto:info@africanspaceagency.org"
-                  className="hover:text-white transition-colors duration-200"
+                  className="hover:text-gray-900 transition-colors duration-200"
                 >
                   info@africanspaceagency.org
                 </a>
@@ -173,23 +160,39 @@ const Footer = ({ className }: FooterProps) => {
           </div>
         </div>
 
+        {/* Divider */}
+        <div className="border-t border-gray-200 my-8"></div>
+
+        {/* Animated Banner */}
+        <div className="bg-forestGreen-100 overflow-hidden mb-8 rounded">
+          <div className="animate-marquee whitespace-nowrap py-3">
+            <span className="text-sm font-medium font-satoshi text-white mx-8">
+               Unifying Africa's Space Ambitions • Unifying Africa's Space Ambitions • 
+              Unifying Africa's Space Ambitions • Unifying Africa's Space Ambitions • 
+              Unifying Africa's Space Ambitions • Unifying Africa's Space Ambitions
+            </span>
+          </div>
+        </div>
+
         {/* Bottom Section */}
-        <div className="border-t border-wine-200/30 pt-8">
+        <div className="bg-wine-100 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
-            <p className="text-gray-300 text-sm font-satoshi">
-              {currentYear} All rights reserved
+            <p className="text-white text-sm font-satoshi">
+              {currentYear} all right reserved
             </p>
 
             {/* Social Links */}
-            <div className="flex space-x-2">
+            <div className="flex space-x-3">
               {socialLinks.map((social, index) => (
-                <SocialLink
+                <a
                   key={index}
                   href={social.href}
-                  icon={social.icon}
-                  label={social.label}
-                />
+                  className="text-white hover:text-gray-200 transition-colors duration-200"
+                  aria-label={social.label}
+                >
+                  {social.icon}
+                </a>
               ))}
             </div>
           </div>

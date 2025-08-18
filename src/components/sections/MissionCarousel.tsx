@@ -64,13 +64,13 @@ const MissionCarousel = ({ className }: MissionCarouselProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="order-2 lg:order-1">
-            <p className="text-sm font-medium font-satoshi mb-4 opacity-90">
+            <p className="text-sm font-medium font-satoshi mb-4 opacity-90 px-4 py-2 rounded-2xl bg-wine-200 inline-block">
               What we do
             </p>
             
             <h2 
               id="mission-title"
-              className="text-3xl lg:text-4xl font-bold font-pt-serif mb-8 leading-tight"
+              className="text-3xl lg:text-4xl font-normal font-pt-serif mb-8 leading-tight"
             >
               Driving Africa's Development Through Coordinated Space Innovation
             </h2>
@@ -79,7 +79,7 @@ const MissionCarousel = ({ className }: MissionCarouselProps) => {
               {missionPoints.map((point, index) => (
                 <div key={index} className="flex items-start space-x-3">
                   <Check 
-                    className="h-5 w-5 mt-0.5 flex-shrink-0" 
+                    className="w-6 h-6 mt-0.5 flex-shrink-0 bg-wine-200 rounded-full overflow-hidden p-1" 
                     aria-hidden="true"
                   />
                   <p className="text-sm font-satoshi leading-relaxed">
@@ -94,7 +94,7 @@ const MissionCarousel = ({ className }: MissionCarouselProps) => {
           <div className="order-1 lg:order-2">
             <div className="relative">
               {/* Carousel Container */}
-              <div className="relative h-80 overflow-hidden rounded-lg">
+              <div className="relative h-80 overflow-hidden ">
                 {slides.map((slide, index) => (
                   <div
                     key={slide.id}

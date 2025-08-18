@@ -1,73 +1,61 @@
-import { ArrowUpRight, Calendar, MapPin } from 'lucide-react'
+import { Calendar } from 'lucide-react'
+import { useState } from 'react'
 import { spaceSovereigntyImage } from '../../assets'
+import ViewAllButton from '../ui/ViewAllButton'
 
 interface EventCardProps {
   title: string
   date: string
   location?: string
-  description: string
+
   image?: string
   featured?: boolean
-  category?: string
 }
 
-const EventCard = ({ title, date, location, description, image, featured = false, category }: EventCardProps) => {
+const EventCard = ({ title, date, image, featured = false }: EventCardProps) => {
   if (featured) {
     return (
-      <article className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+      <article className=" bg-duskySky-100  overflow-hidden   transition-shadow duration-300 ">
         <img
           src={image || spaceSovereigntyImage}
           alt={title}
           className="w-full h-64 object-cover"
         />
         <div className="p-6">
-          <div className="flex items-center text-sm text-wine-100 font-medium font-satoshi mb-2">
-            <Calendar className="h-4 w-4 mr-2" />
-            {date}
-          </div>
-          <h3 className="text-xl font-bold font-pt-serif text-gray-900 mb-3">
+   
+          <h3 className="text-xl font-normal font-pt-serif text-gray-900 mb-3">
             {title}
           </h3>
-          {location && (
-            <div className="flex items-center text-sm text-gray-600 font-satoshi mb-3">
-              <MapPin className="h-4 w-4 mr-2" />
-              {location}
-            </div>
-          )}
-          <p className="text-gray-700 font-satoshi leading-relaxed">
-            {description}
-          </p>
+             <div className="flex items-center text-sm font-semibold font-satoshi mb- justify-start">
+           
+            {date}
+          </div>
+          
         </div>
       </article>
     )
   }
 
   return (
-    <article className="bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-100">
+    <article className="bg-white    transition-shadow duration-200 ">
       <div className="flex space-x-4">
         <div className="flex-shrink-0">
           <img
             src={image || spaceSovereigntyImage}
             alt={title}
-            className="w-16 h-16 rounded-lg object-cover"
+            className="w-32 h-32  object-cover"
           />
         </div>
         <div className="flex-1 min-w-0">
-          {category && (
-            <span className="inline-block text-xs font-medium font-satoshi text-wine-100 bg-wine-100/10 px-2 py-1 rounded mb-2">
-              {category}
-            </span>
-          )}
-          <h4 className="text-sm font-bold font-pt-serif text-gray-900 mb-1 leading-tight">
+         
+          <h4 className="text-sm font-normal font-pt-serif text-gray-900 mb-1 leading-tight">
             {title}
           </h4>
-          <div className="flex items-center text-xs text-gray-600 font-satoshi mb-1">
-            <Calendar className="h-3 w-3 mr-1" />
+          <div className="flex items-center text-sm text-gray-600 font-satoshi mb-1 pt-3">
+          
             {date}
           </div>
-          <p className="text-xs text-gray-600 font-satoshi leading-relaxed">
-            {description}
-          </p>
+         
         </div>
       </div>
     </article>
@@ -79,12 +67,59 @@ interface EventsSectionProps {
 }
 
 const EventsSection = ({ className }: EventsSectionProps) => {
-  const featuredEvent = {
-    title: "African Space Agency to be Inaugurated in 2025",
-    date: "20 May '25",
-    location: "Cairo, Egypt",
-    description: "Historic inauguration ceremony marking the official establishment of the African Space Agency headquarters in Cairo, bringing together African space leaders and international partners.",
-    image: spaceSovereigntyImage
+  const [activeTab, setActiveTab] = useState<'upcoming' | 'events' | 'press'>('upcoming')
+
+  const getTabConfig = () => {
+    switch (activeTab) {
+      case 'upcoming':
+        return {
+          title: "Events to look forward to",
+          description: "Discover upcoming AFSA events, launches, and space-related activities.",
+          featuredEvent: {
+            title: "African Space Agency to be Inaugurated in 2025",
+            date: "20 May '25",
+            location: "Cairo, Egypt",
+            description: "Historic inauguration ceremony marking the official establishment of the African Space Agency headquarters in Cairo, bringing together African space leaders and international partners.",
+            image: spaceSovereigntyImage
+          }
+        }
+      case 'events':
+        return {
+          title: "Events of AfSA",
+          description: "Browse past AfSA events and key moments in Africa's space journey.",
+          featuredEvent: {
+            title: "African Space Week 2024",
+            date: "15 Sep '24",
+            location: "Addis Ababa, Ethiopia",
+            description: "Successfully concluded week-long celebration showcasing African space achievements, bringing together 500+ delegates from across the continent to discuss the future of African space exploration.",
+            image: spaceSovereigntyImage
+          }
+        }
+      case 'press':
+        return {
+          title: "Stay in the loop of AFSA",
+          description: "Get the latest news, updates, and milestones from the African Space Agency.",
+          featuredEvent: {
+            title: "AFSA Establishes First Continental Space Observatory",
+            date: "12 Aug '25",
+            location: "Cape Town, South Africa",
+            description: "Major milestone as AFSA announces the establishment of Africa's first continental space observatory, marking a new era in African space research and international collaboration.",
+            image: spaceSovereigntyImage
+          }
+        }
+      default:
+        return {
+          title: "Events to look forward to",
+          description: "Discover upcoming AFSA events, launches, and space-related activities.",
+          featuredEvent: {
+            title: "African Space Agency to be Inaugurated in 2025",
+            date: "20 May '25",
+            location: "Cairo, Egypt",
+            description: "Historic inauguration ceremony marking the official establishment of the African Space Agency headquarters in Cairo, bringing together African space leaders and international partners.",
+            image: spaceSovereigntyImage
+          }
+        }
+    }
   }
 
   const upcomingEvents = [
@@ -132,57 +167,155 @@ const EventsSection = ({ className }: EventsSectionProps) => {
     }
   ]
 
+  const eventsList = [
+    {
+      title: "African Space Week 2025",
+      date: "15 Sep '25",
+      description: "Annual celebration of African space achievements and future missions.",
+      category: "Conference",
+      image: spaceSovereigntyImage
+    },
+    {
+      title: "Satellite Launch Operations Training",
+      date: "03 Oct '25",
+      description: "Technical training program for satellite operations personnel.",
+      category: "Training",
+      image: spaceSovereigntyImage
+    },
+    {
+      title: "Pan-African Space Cooperation Summit",
+      date: "12 Nov '25",
+      description: "High-level summit discussing space cooperation across African nations.",
+      category: "Summit",
+      image: spaceSovereigntyImage
+    },
+    {
+      title: "Youth Space Challenge 2025",
+      date: "25 Dec '25",
+      description: "Educational competition for young African space enthusiasts.",
+      category: "Competition",
+      image: spaceSovereigntyImage
+    }
+  ]
+
+  const pressReleases = [
+    {
+      title: "AFSA Signs Memorandum with ESA",
+      date: "10 Aug '25",
+      description: "Strategic partnership agreement signed with European Space Agency.",
+      category: "Partnership",
+      image: spaceSovereigntyImage
+    },
+    {
+      title: "First African Satellite Manufacturing Facility",
+      date: "05 Jul '25",
+      description: "Announcement of the first indigenous satellite manufacturing facility in Africa.",
+      category: "Infrastructure",
+      image: spaceSovereigntyImage
+    },
+    {
+      title: "African Space Data Center Operational",
+      date: "20 Jun '25",
+      description: "New data center begins operations to support African space missions.",
+      category: "Technology",
+      image: spaceSovereigntyImage
+    },
+    {
+      title: "AFSA Launches Scholarship Program",
+      date: "15 May '25",
+      description: "New scholarship program for African students in space sciences.",
+      category: "Education",
+      image: spaceSovereigntyImage
+    }
+  ]
+
+  const getCurrentTabEvents = () => {
+    switch (activeTab) {
+      case 'upcoming':
+        return upcomingEvents
+      case 'events':
+        return eventsList
+      case 'press':
+        return pressReleases
+      default:
+        return upcomingEvents
+    }
+  }
+
   return (
-    <section className={`py-16 bg-gray-50 ${className}`} aria-labelledby="events-title">
+    <section className={`py-16  ${className}`} aria-labelledby="events-title">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div>
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-6">
             <h2 
               id="events-title"
-              className="text-2xl font-bold font-pt-serif text-gray-900 mb-2"
+              className="text-3xl font-normal font-pt-serif text-gray-900 lg:w-96"
             >
-              Events to look forward to
+              {getTabConfig().title}
             </h2>
-            <p className="text-gray-600 font-satoshi">
-              Discover upcoming AFSA events, launches, and space-related activities.
-            </p>
+            
+            {/* Tab Buttons */}
+            <div className="hidden sm:flex items-center">
+              <button 
+                onClick={() => setActiveTab('upcoming')}
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
+                  activeTab === 'upcoming'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
+                Upcoming
+              </button>
+              <button 
+                onClick={() => setActiveTab('events')}
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
+                  activeTab === 'events'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
+                Events
+              </button>
+              <button 
+                onClick={() => setActiveTab('press')}
+                className={`px-4 py-2 text-base font-medium font-satoshi border-b-4 transition-all duration-200 ${
+                  activeTab === 'press'
+                    ? 'text-black border-wine-100 '
+                    : 'text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900'
+                }`}
+              >
+                Press Release
+              </button>
+            </div>
           </div>
           
-          <div className="hidden sm:flex items-center space-x-4">
-            <button className="px-4 py-2 text-sm font-medium font-satoshi text-wine-100 border border-wine-100 rounded hover:bg-wine-100 hover:text-white transition-colors duration-200">
-              Upcoming
-            </button>
-            <button className="px-4 py-2 text-sm font-medium font-satoshi text-gray-600 border border-gray-300 rounded hover:bg-gray-50 transition-colors duration-200">
-              Press Release
-            </button>
-            <button className="inline-flex items-center text-sm font-medium font-satoshi text-wine-100 hover:text-wine-200 transition-colors duration-200 group">
-              View all
-              <ArrowUpRight className="ml-1 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
-            </button>
+          <div className="flex items-center justify-between ">
+            <p className="text-gray-600 font-satoshi max-w-2xl text-lg lg:w-96">
+              {getTabConfig().description}
+            </p>
+            <ViewAllButton />
           </div>
         </div>
 
         {/* Events Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Featured Event */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-2">
+         
           <div className="lg:col-span-1">
             <EventCard
-              {...featuredEvent}
+              {...getTabConfig().featuredEvent}
               featured={true}
             />
           </div>
 
-          {/* Upcoming Events Grid */}
+          {/* Current Tab Events Grid */}
           <div className="lg:col-span-2">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {upcomingEvents.map((event, index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
+              {getCurrentTabEvents().map((event, index) => (
                 <EventCard
-                  key={index}
+                  key={`${activeTab}-${index}`}
                   title={event.title}
                   date={event.date}
-                  description={event.description}
-                  category={event.category}
                   image={event.image}
                 />
               ))}
